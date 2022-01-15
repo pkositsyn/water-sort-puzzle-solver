@@ -1,4 +1,7 @@
 # Water Sort Puzzle Solver
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pkositsyn/water-sort-puzzle-solver)](https://pkg.go.dev/github.com/pkositsyn/water-sort-puzzle-solver)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pkositsyn/water-sort-puzzle-solver)](https://goreportcard.com/report/github.com/pkositsyn/water-sort-puzzle-solver)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/pkositsyn/water-sort-puzzle-solver/blob/master/LICENSE)
 
 This code can solve a game called "Water Sort Puzzle" 
 available on APPStore and PlayMarket.
