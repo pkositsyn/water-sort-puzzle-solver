@@ -57,10 +57,16 @@ Puzzle solved in 1 steps!
 Which means that we need to move orange from 1st flask to the 2nd.
 Eventually, this gives position `;OOOO` which ends the game round.
 
+### Program flags
+
+Via `--algorithm` command line flag you can choose the algorithm used to search for solution.
+Possible choices are currently `A*, IDA*, Dijkstra` (default `A*`). Example: `watersortsolver --algorithm idastar`.
+See `watersortsolver --help` for correct names for algorithms
+
 ### Notes
 
 The solution produced by the program is minimal in number of steps needed to solve the puzzle.
-Implementation uses A* graph algorithm to solve puzzles efficiently.
+Implementation uses `A*/IDA*/Dijkstra` graph algorithms to solve puzzles efficiently.
 
 I also wrote tests for the first 50 rounds of the game, so the code is kind of stable.
 

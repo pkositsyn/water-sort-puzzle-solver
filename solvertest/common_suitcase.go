@@ -176,6 +176,10 @@ func (s *SolverSuite) TestSolver() {
 			state:         "GBRP;FFFG;FROG;OROB;BPQQ;HHTO;QHGB;HPPT;TTRQ;;",
 			expectedSteps: 24,
 		},
+		{
+			state:         "YOQG;BHTR;TGPH;WRPY;TWFH;YTQH;VBQO;PBVR;GBFF;OPWV;OYGQ;FVWR;;",
+			expectedSteps: 38,
+		},
 	}
 
 	for i, testCase := range testCases {
@@ -202,8 +206,8 @@ func (s *SolverSuite) TestSolver() {
 				s.Require().NoError(err)
 			}
 
-			if aStarSolver, ok := solver.(*watersortpuzzle.AStarSolver); ok {
-				log.Printf("%+v, Path length: %d\n", aStarSolver.Stats(), len(steps))
+			if statsSolver, ok := solver.(watersortpuzzle.SolverWithStats); ok {
+				log.Printf("%+v, Path length: %d\n", statsSolver.Stats(), len(steps))
 			}
 			s.Assert().Equal(tt.expectedSteps, len(steps))
 			s.Assert().True(state.IsTerminal())

@@ -48,3 +48,23 @@ func TestDijkstraSolver(t *testing.T) {
 func BenchmarkDijkstraSolver(b *testing.B) {
 	solvertest.TemplateBenchmarkSolve(b, dijkstraSolverFactoryMethod)
 }
+
+type IDAStarSolverSuite struct {
+	solvertest.SolverSuite
+}
+
+func idaStarFactoryMethod() watersortpuzzle.Solver {
+	return watersortpuzzle.NewIDAStarSolver()
+}
+
+func (s *IDAStarSolverSuite) SetupSuite() {
+	s.NewSolverFunc = idaStarFactoryMethod
+}
+
+func TestIDAStarSolver(t *testing.T) {
+	suite.Run(t, new(IDAStarSolverSuite))
+}
+
+func BenchmarkIDAStarSolver(b *testing.B) {
+	solvertest.TemplateBenchmarkSolve(b, idaStarFactoryMethod)
+}

@@ -1,12 +1,17 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	watersortpuzzle "github.com/pkositsyn/water-sort-puzzle-solver"
 )
 
+var algorithmType = flag.String("algorithm", "astar",
+	`Algorithm to solve with. Choices: [astar, idastar, dijkstra]`)
+
 func main() {
+	flag.Parse()
 	fmt.Println("Input initial puzzle state")
 
 	var initialStateStr string
@@ -20,7 +25,15 @@ func main() {
 		return
 	}
 
-	solver := watersortpuzzle.NewAStarSolver()
+	var solver watersortpuzzle.Solver
+	switch *algorithmType {
+	case "astar":
+		solver = watersortpuzzle.NewAStarSolver()
+	case "idastar":
+		solver = watersortpuzzle.NewIDAStarSolver()
+	case "dijkstra":
+		solver = watersortpuzzle.NewDijkstraSolver()
+	}
 
 	var initialState watersortpuzzle.State
 	if err := initialState.FromString(initialStateStr); err != nil {
