@@ -47,7 +47,12 @@ func main() {
 		return
 	}
 
-	fmt.Printf("Puzzle solved in %d steps!\n", len(steps))
+	suffix := ""
+	if statsSolver, ok := solver.(watersortpuzzle.SolverWithStats); ok {
+		suffix = fmt.Sprintf(" Algorithm took %d iterations to find solution.", statsSolver.Stats().Steps)
+	}
+
+	fmt.Printf("Puzzle solved in %d steps!%s\n", len(steps), suffix)
 	for _, step := range steps {
 		fmt.Println(step.From+1, step.To+1)
 	}
